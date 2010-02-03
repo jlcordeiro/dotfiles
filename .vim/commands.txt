@@ -1,0 +1,358 @@
+ _______________________________________________________________
+|																|
+|VIM COMMANDS RESUMED WIKI										|
+|																|
+|													by Rui Melo |
+|_______________________________________________________________|
+
+=================================================================
+HOW TO EXIT
+=================================================================
+
+:q[uit] 			Quit Vim. This fails when changes have been made.
+:qa					Quit all tabs/buffers/splits.
+:x					Write and quit current tab/buffer/split
+:xa					Write all tabs/bufferrs/splits and quit vim
+:q[uit]! 			Quit without writing.
+:cq[uit] 			Quit always, without writing.
+:wq 				Write the current file and exit.
+:wq! 				Write the current file and exit always.
+:wq {file} 			Write to {file}. Exit if not editing the last
+:wq! {file} 		Write to {file} and exit always.
+:[range]wq[!][file] Same as above, but only write the lines in [range].
+:saveas filename 	Saves the current buffer under filename
+ZZ 					Write current file, if modified, and exit.
+ZQ 					Quit current file and exit (same as ":q!").
+:bdelete			Delete a buffer (Useful to clean the tag window)
+
+=================================================================
+EDITING A FILE
+=================================================================
+
+:e[dit] 			Edit the current file. This is useful to re-edit the current file,
+					when it has been changed outside of Vim.
+:e[dit]! 			Edit the current file always. Discard any changes to the current
+					buffer. This is useful if you want to start all over again.
+:e[dit] {file} 		Edit {file}.
+:e[dit]! {file} 	Edit {file} always. Discard any changes to the current
+					buffer.
+gf 					Edit the file whose name is under or after the cursor. Mnemonic: "goto
+					file".
+
+=================================================================
+INSERTING TEXT
+=================================================================
+
+a 					Append text after the cursor [count] times.
+A 					Append text at the end of the line [count] times.
+i 					Insert text before the cursor [count] times.
+I 					Insert text before the first non-blank in the line [count] times.
+gI 					Insert text in column 1 [count] times.
+o 					Begin a new line below the cursor and insert text, repeat [count] times.
+O 					Begin a new line above the cursor and insert text, repeat [count] times.
+cc                  cut and replace the entire current line with a new line. 
+c$                  cut and replace everything from the current cursor position to the end of the line. 
+c0                  replace everything from the current cursor position to the beginning of the line. 
+
+=================================================================
+INSERTING A FILE
+=================================================================
+
+:r[ead] [name] 		Insert the file [name] below the cursor.
+:r[ead] !{cmd} 		Execute {cmd} and insert its standard output below the cursor.
+
+=================================================================
+DELETING TEXT
+=================================================================
+
+<Del> or x 							Delete [count] characters under and after the cursor
+X 									Delete [count] characters before the cursor
+d{motion} 							Delete text that {motion} moves over
+dd 									Delete [count] lines
+D 									Delete the characters under the cursor until the end of the line
+{Visual}x or {Visual}d 				Delete the highlighted text (for {Visual} see Selecting Text).
+{Visual}CTRL-H or {Visual} 			When in Select mode: Delete the highlighted text
+{Visual}X or {Visual}D 				Delete the highlighted lines
+:[range]d[elete] 					Delete [range] lines (default: current line)
+:[range]d[elete] {count} 			Delete {count} lines, starting with [range]
+
+=================================================================
+CHANGING OR REPLACING TEXT
+=================================================================
+
+r{char} 		Replace the character under the cursor with {char}.
+R 				Enter Insert mode, replacing characters rather than inserting
+~ 				Switch case of the character under the cursor and move the cursor to the
+				Right. If a [count] is given, do that many characters.
+~{motion} 		Switch case of {motion} text.
+{Visual}~ 		Switch case of highlighted text
+
+=================================================================
+SUBSTITUTING
+=================================================================
+
+:[range]s[ubstitute]/{pattern}/{string}/[c][e][g][p][r][i][I] [count] 					For each line in [range] replace a match of {pattern} with {string}.
+:[range]s[ubstitute] [c][e][g][r][i][I] [count] :[range]&[c][e][g][r][i][I] [count] 	Repeat last :substitute with same search pattern and substitute string, but without the same flags. You may add extra flags
+	
+The arguments that you can use for the substitute commands:
+[c] 	Confirm each substitution. Vim positions the cursor on the matching
+		String. You can type:
+'y' 	To substitute this match
+'n' 	To skip this match
+'a' 	To substitute this and all remaining matches {not in Vi}
+'q' 	To quit substituting {not in Vi}
+CTRL-E 	To scroll the screen up {not in Vi}
+CTRL-Y 	To scroll the screen down {not in Vi}.
+[e] 	When the search pattern fails, do not issue an error message and, in
+		particular, continue in maps as if no error occurred. 
+[g] 	Replace all occurrences in the line. Without this argument,
+		Replacement occurs only for the first occurrence in each line.
+[i] 	Ignore case for the pattern. 
+[I] 	Don't ignore case for the pattern. 
+[p] 	Print the line containing the last substitute.
+
+=================================================================
+COPYING AND MOVING TEXT
+=================================================================
+
+"{a-zA-Z0-9.%#:-"} 			Use register {a-zA-Z0-9.%#:-"} for next delete, yank or
+							put (use uppercase character to append with delete and yank) 
+							({.%#:} only work with put).
+:reg[isters] 				Display the contents of all numbered and named registers.
+:reg[isters] {arg} 			Display the contents of the numbered and named registers
+							that are mentioned in {arg}.
+:di[splay] [arg] 			Same as :registers.
+["x]y{motion} 				Yank {motion} text [into register x].
+["x]yy 						Yank [count] lines [into register x]
+["x]Y 						yank [count] lines [into register x] (synonym for yy).
+{Visual}["x]y 				Yank the highlighted text [into register x] (for {Visual} see
+							Selecting Text).
+{Visual}["x]Y 				Yank the highlighted lines [into register x]
+:[range]y[ank] [x] 			Yank [range] lines [into register x].
+:[range]y[ank] [x] {count} 	Yank {count} lines, starting with last line number
+							in [range] (default: current line), [into register x].
+["x]p 						Put the text [from register x] after the cursor [count] times.
+["x]P 						Put the text [from register x] before the cursor [count] times.
+["x]]p						Put the text [from register x] before the cursor [count] times but adjust indent.
+["x]gp 						Just like "p", but leave the cursor just after the new text.
+["x]gP 						Just like "P", but leave the cursor just after the new text.
+:[line]pu[t] [x] 			Put the text [from register x] after [line] (default
+							current line).
+:[line]pu[t]! [x] 			Put the text [from register x] before [line] (default
+							current line).
+
+=================================================================
+UNDO/REDO/REPEAT
+=================================================================
+
+u 							Undo [count] changes.
+:u[ndo] 					Undo one change.
+CTRL-R 						Redo [count] changes which were undone.
+:red[o] 					Redo one change which was undone.
+U 							Undo all latest changes on one line. {Vi: while not moved off of it}
+. 							Repeat last change, with count replaced with [count].
+@:							Repeat last command 
+q{register} ... q			Record on the given register the folowing keystrokes. to stop recording 
+							hit q again. use capital caracters on the register to append keystrokes to it
+@{register}					Play the keystrokes stores on the register given
+
+=================================================================
+MOVING AROUND
+=================================================================
+
+Basic motion commands:
+
+k 
+h l  
+j 
+
+<Home> or 0 	To the first character of the line (exclusive).
+^ 				To the first non-blank character of the line
+$ or <End> 		To the end of the line and [count - 1] lines downward
+
+
+=================================================================
+MARKS
+=================================================================
+
+m{a-zA-Z} 					Set mark {a-zA-Z} at cursor position (does not move the cursor,
+							This is not a motion command).
+m' or m` 					Set the previous context mark. This can be jumped to with the "''" or "``"
+							Command (does not move the cursor, this is not a motion command).
+:[range]ma[rk] {a-zA-Z} 	Set mark {a-zA-Z} at last line number in [range],
+							column 0. Default is cursor line.
+:[range]k{a-zA-Z} 			Same as :mark, but the space before the mark name can be omitted.
+'{a-z} 						To the first non-blank character on the line with mark {a-z} (linewise).
+'{A-Z0-9} 					To the first non-blank character on the line with mark {A-Z0-9} in the correct file
+`{a-z} 						To the mark {a-z}
+`{A-Z0-9} 					To the mark {A-Z0-9} in the correct file
+:marks 						List all the current marks (not a motion command).
+:marks {arg} 				List the marks that are mentioned in {arg} (not a motion
+							command).
+
+=================================================================
+SEARCHING
+=================================================================
+
+*                           Search for the word under the current cursor position (the use N/n normally)
+/{pattern}[/] 				Search forward for the [count]'th occurrence of {pattern}
+/{pattern}/{offset} 		Search forward for the [count]'th occurrence of
+							{pattern} and go {offset} lines up or down.
+/<CR> 						Search forward for the [count]'th latest used pattern
+//{offset}<CR> 				Search forward for the [count]'th latest used pattern with
+							//new. If {offset} is empty no offset is used.
+?{pattern}[?]<CR> 			Search backward for the [count]'th previous occurrence of
+							{pattern}
+?{pattern}?{offset}<CR> 	Search backward for the [count]'th previous
+							Occurrence of {pattern} and go {offset} lines up or down
+?<CR> 						Search backward for the [count]'th latest used pattern
+??{offset}<CR> 				Search backward for the [count]'th latest used pattern with
+							New {offset}. If {offset} is empty no offset is used.
+n 							Repeat the latest "/" or "?" [count] times.
+N 							Repeat the latest "/" or "?" [count] times in opposite direction. 
+
+=================================================================
+SELECTING TEXT (VISUAL MODE)
+=================================================================
+
+To select text, enter visual mode with one of the commands below, and use
+motion commands to highlight the text you are interested in. Then, use some
+command on the text.
+
+The operators that can be used are:
+ ~			Switch case
+ d			Delete
+ c 			Change
+ y			Yank
+ >			Shift right 
+ <			Shift left 
+ !			Filter through external command 
+ = 			Filter through 'equalprg' option command (indent) 
+ gq			Format lines to 'textwidth' length 
+
+v 			Start Visual mode per character.
+V 			Start Visual mode linewise.
+CTRL-v		Start Visual mode blockwise.
+<Esc> 		Exit Visual mode without making any changes
+
+=================================================================
+MULTIPLE FILES
+=================================================================
+
+:vertical 					Used to make the next comands in vertical mode instead of horizontal mode (default)
+:split 						Open current buffer on a new splited window
+:spa filename 				Create a new split with filename
+:vsp filename 				Create a new vertical split with filename
+:new filename 				Open filename in a new splited window
+:tabnew filename			Open filename on a new tab
+:diffsplit filename			Open filename in a new splited window in diff mode
+:diffupdate 				After editing a file in diff mode do this to update the highlited differences
+CTRL-w CTRL-w				Cicle between splits (below/right)
+CTRL-W W 					Cicle between splits (above/left)
+CTRL-W K					Change vertical split to horizontal split (current split stays on top)
+CTRL-W H					Change horizontal split to vertical split (current split stats on the far left side)
+CTRL-W J					Move the current window to be at the very bottom
+CTRL-W L					Move the current window to be at the far right
+CTRL-W T					Move the current window to a new tab page. This fails if there is only one window in 
+							the current tab page.
+CTRL-W =					Make all windows equaly hight and wide
+:windo {cmd}				Execute {cmd} in each window
+
+=================================================================
+COMPLETE COMMANDS
+=================================================================
+
+On insert mode hit the folowing keys to show up a complete popup menu:
+
+CTRL-N				Find next match for words that start with the keyword in front of the cursor
+CTRL-P				Find previous match for words that start with the keyword in front of the cursor
+CTRL-X CTRL-O 		Use only omnicppcomplete function (build first a tagfile by hitting <F12>)
+CTRL-X CTRL-D		Search in the current and included files for the
+					ifirst definition (or macro) name that starts with
+					the same characters as before the cursor.
+CTRL-X CTRL-F		Search for the first file name that starts with the
+					same characters as before the cursor.  The matching
+					file name is inserted in front of the cursor.
+CTRL-X CTRL-I		Search for the first keyword in the current and
+					included files that starts with the same characters
+					as those before the cursor.
+CTRL-X CTRL-L		Search backwards for a line that starts with the
+					same characters as those in the current line before
+					the cursor.  Indent is ignored.  The matching line is
+					inserted in front of the cursor.
+
+=================================================================
+TAGLIST COMMANDS
+=================================================================
+
+Any of the following comands are only valid on the Taglist window (<F8>)
+
+o				Jump to the location where the tag under cursor is
+				defined in a new window.
+P           	Jump to the tag in the previous (Ctrl-W_p) window.
+p           	Display the tag definition in the file window and
+				keep the cursor in the taglist window itself.
+t           	Jump to the tag in a new tab. If the file is already
+				opened in a tab, move to that tab.
+Ctrl-t			Jump to the tag in a new tab.
+<Space>     	Display the prototype of the tag under the cursor.
+				For file names, display the full path to the file,
+				file type and the number of tags. For tag types, display the
+				tag type and the number of tags.
+u           	Update the tags listed in the taglist window
+s           	Change the sort order of the tags (by name or by order)
+d           	Remove the tags for the file under the cursor
+x           	Zoom-in or Zoom-out the taglist window
++           	Open a fold
+-           	Close a fold
+*           	Open all folds
+=           	Close all folds
+[[				Jump to the beginning of the previous file
+<Backspace>		Jump to the beginning of the previous file
+]]				Jump to the beginning of the next file
+<Tab>			Jump to the beginning of the next file
+q           	Close the taglist window
+<F1>        	Display help
+
+
+=================================================================
+MISCELANEOUS
+=================================================================
+
+vim -d file1 file2 ...			Starts vim in diff mode between file1 and file2
+vim -p file1 file2 ... 			Starts vim with file1 and file2 in different tabs
+:as								Prints the ascii value of the caracter under the cursor in decimal, exadecimal and octal
+:helpg							Search all help text files and make a list of lines in which {pattern} matches
+:nohl							Dissable the highlight made by the previous search
+. 								Repeat last change
+:h uganda						Vim's noble purpose...
+:source file					Read Ex commands from a file (useful for update .vimrc after changes)
+
+
+=================================================================
+BUFEXPLORER PLUGIN
+=================================================================
+With bufexplorer, you can quickly and easily switch between buffers by using the one of the default public interfaces:
+
+  '\be' (normal open)  or
+  '\bs' (force horizontal split open)  or
+  '\bv' (force vertical split open)
+
+Once the bufexplorer window is open you can use the normal movement keys (hjkl) to move around and then use <Enter> or <Left-Mouse-Click> to select the buffer you would like to open. If you would like to have the selected buffer opened in a new tab, simply press either <Shift-Enter> or 't'. Please note that when opening a buffer in a tab, that if the buffer is already in another tab, bufexplorer can switch to that tab automatically for you if you would like. More about that in the supplied VIM help.
+
+
+
+=================================================================
+USER'S COMMANDS
+=================================================================
+
+,c							Comment the current line or the highlited lines
+,u							Uncomment the current line or the highlited lines
+<F4>						Change to correspondind .cpp/.hpp file
+<F4>						Change to correspondind .cpp/.h file
+<F12>						Build recursively a tagfile from current directory
+<F5>						Saves the curtrent session
+<F6>						Load the previously saved session
+<F8>						Pop Up/Down the taglist window
+SHIFT-left SHIFT-right		Change window whidth
+CTRL-J CTRL-K				Fast window minimize (on horizontal splits only)

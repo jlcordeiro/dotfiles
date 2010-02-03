@@ -1,0 +1,13 @@
+CXX=g++
+LINKFLAGS = -L"/usr/local/lib"
+
+SAMPLES = $(notdir $(patsubst %.cpp, %, $(wildcard *.cpp)))
+
+all: $(SAMPLES)
+
+%: %.cpp
+	@echo $@
+	@$(CXX) -o $@ $< $(LINKFLAGS)
+
+clean:
+	@rm -rf *.o *~

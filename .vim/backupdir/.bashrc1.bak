@@ -1,0 +1,99 @@
+# .bashrc
+
+case "$-" in
+	*i*)
+	# Colors
+	Black="$(tput setaf 0)"
+	BlackBG="$(tput setab 0)"
+	DarkGrey="$(tput bold ; tput setaf 0)"
+	LightGrey="$(tput setaf 7)"
+	LightGreyBG="$(tput setab 7)"
+	White="$(tput bold ; tput setaf 7)"
+	Red="$(tput setaf 1)"
+	RedBG="$(tput setab 1)"
+	LightRed="$(tput bold ; tput setaf 1)"
+	Green="$(tput setaf 2)"
+	GreenBG="$(tput setab 2)"
+	LightGreen="$(tput bold ; tput setaf 2)"
+	Brown="$(tput setaf 3)"
+	BrownBG="$(tput setab 3)"
+	Yellow="$(tput bold ; tput setaf 3)"
+	Blue="$(tput setaf 4)"
+	BlueBG="$(tput setab 4)"
+	LightBlue="$(tput bold ; tput setaf 4)"
+	Purple="$(tput setaf 5)"
+	PurpleBG="$(tput setab 5)"
+	Pink="$(tput bold ; tput setaf 5)"
+	Cyan="$(tput setaf 6)"
+	CyanBG="$(tput setab 6)"
+	LightCyan="$(tput bold ; tput setaf 6)"
+	NC="$(tput sgr0)"       # No Color
+
+	# Functions
+	spin ()
+	{
+		echo -ne "$White-"
+		echo -ne "$LightGray\b|"
+		echo -ne "$LightGreen\bx"
+		echo -ne "$LightBlue\b+$RC"
+	}
+
+	typetext1 ()
+	{
+		echo -ne "$LightGreen Welcome to "
+		echo -ne "$HOSTNAME $NC"
+	}
+
+	typetext2 ()
+	{
+		echo -ne "$LightGreen Enjoy your stays! "
+	}
+
+	# Welcome Screen
+	clear
+	echo -e "";
+	for i in `seq 1 15` ; do spin; done; typetext1; for i in `seq 1 15` ; do spin; done ;echo "";
+		echo "";
+		echo -ne "$LightBlue Hello $LightGreen$USER $LightBlue!";
+		echo "";
+		echo "";
+		echo -ne "$LightBlue Today is: $LightGreen`date`";
+		echo ""; 
+		echo -ne "$LightBlue Last login:$LightGreen `lastlog | grep $USER | awk '{print $4" "$6" "$5" "$9}'`$LightBlue at$LightGreen `lastlog | grep $USER | awk '{print $7}'`$LightBlue from$LightGreen `lastlog | grep $USER | awk '{print $3}'`";
+		echo "";
+		echo "";
+		for i in `seq 1 21` ; do spin; done; typetext2; for i in `seq 1 20` ; do spin; done ;echo "";
+			echo "" $NC;
+
+
+			# Put this on your /root/.bashrc file to have a different prompt
+			# PS1='\[$LightBlue\][\[$Red\]Molecula Machine\[$LightBlue\]][\[$LightGreen\]\W\[$LightBlue\]]\$\[$NC\] '
+			PS1='\[$LightBlue\][\[$LightGreen\]Molecula Machine\[$LightBlue\]][\[$LightGreen\]\W\[$LightBlue\]]\$\[$NC\] '
+
+
+			# Source global definitions
+			if [ -f /etc/bashrc ]; then
+				. /etc/bashrc
+			fi
+
+			# User specific aliases and functions
+			alias ..='cd ..'
+			alias ...='cd ../..'
+			alias ls='ls --color=always'
+			alias rm='rm -iv'
+			alias mv='mv -iv'
+			alias cp='cp -iv'
+			alias netreboot='sudo /etc/rc.d/init.d/network stop;sudo /etc/rc.d/init.d/network start'
+			# Aliases for ssh connects
+			alias isr='ssh -Y rmelo@phobos.isr.uc.pt'
+			alias speedgraph='ssh -Y rmelo@speedgraph.isr.uc.pt'
+			alias deec='ssh -Y a501041098@alunos.deec.uc.pt'
+
+			alias mount='mount | column -t'
+			alias df='df -h|grep hda'
+			alias commandsvim='\vim ~/.vim/commands.txt'
+			alias commandlist='vim ~/mydocs/commandlist'
+			alias vim.='\vim ./' ;;
+
+			*)	 ;;
+		esac

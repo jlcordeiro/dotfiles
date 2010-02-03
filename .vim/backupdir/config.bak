@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = ssh://mr@193.136.230.138/~/mr_proj-mainline
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "wam_pc"]
+	url = ssh://pqueiros@193.136.230.80/~/mr_proj-pqueiros
+	fetch = +refs/heads/*:refs/remotes/wam_pc/*
+[gui]
+	geometry = 1280x713+0+24 601 555

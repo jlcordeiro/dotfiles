@@ -1,0 +1,50 @@
+KEY CODES
+Note: Use the <> form if possible
+
+option		name		meaning
+
+t_ku		<Up>		arrow up			   
+t_kd		<Down>		arrow down			   
+t_kr		<Right>		arrow right			   
+t_kl		<Left>		arrow left			   
+			<S-Up>		shift arrow up
+			<S-Down>	shift arrow down
+t_%i		<S-Right>	shift arrow right		   
+t_#4		<S-Left>	shift arrow left		   
+t_k1		<F1>		function key 1			   
+t_k2		<F2>		function key 2 			   
+t_k3		<F3>		function key 3 			   
+t_k4		<F4>		function key 4 			   
+t_k5		<F5>		function key 5 			   
+t_k6		<F6>		function key 6 			   
+t_k7		<F7>		function key 7 			   
+t_k8		<F8>		function key 8 			   
+t_k9		<F9>		function key 9 			   
+t_k;		<F10>		function key 10 		   
+t_F1		<F11>		function key 11 		   
+t_F2		<F12>		function key 12 		   
+			<S-F1r>		shifted function key 1
+			<S-F2>		shifted function key 2
+			<S-F3>		shifted function key 3
+			<S-F4>		shifted function key 4
+			<S-F5>		shifted function key 5
+			<S-F6>		shifted function key 6
+			<S-F7>		shifted function key 7
+			<S-F8>		shifted function key 8
+			<S-F9>		shifted function key 9
+			<S-F10>		shifted function key 10
+			<S-F11>		shifted function key 11
+			<S-F12>		shifted function key 12
+t_%1		<Help>		help key			   
+t_&8		<Undo>		undo key			   
+t_kI		<Insert>	insert key			   
+t_kD		<Delete>	delete key			   
+t_kb		<BS>		backspace key			   
+t_kh		<Home>		home key			   
+t_@7		<End>		end key				t_@7">  t_@7'"> 
+t_kP		<PageUp>	page-up key			   
+t_kN		<PageDown>	page-down key			   
+t_K1		<kHome>		keypad home key			   
+t_K4		<kEnd>		keypad end key			   
+t_K3		<kPageUp>	keypad page-up key		   
+t_K5		<kPageDown>	keypad page-down key		

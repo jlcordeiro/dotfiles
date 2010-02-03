@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Musicovery : interactive webRadio</title>
+<meta name="Description" content="Discover new music based on your mood, this free webradio let you browse music styles and epochs">
+<meta name="KEYWORDS" content="music, radio, web radio, webradio, new music, free music, mood, discover, discover new music, discover artists, ambiance, humeur, ecoute gratuite, visuelle, music styles, catalogue">
+<meta http-equiv="Content-Language" content="en,fr">
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+<link rel="shortcut icon" href="http://www.musicovery.com/favicon.ico">
+<link rel="icon" href="http://www.musicovery.com/img/animated_favicon1.gif" type="image/gif">
+ <style type="text/css">
+html,body {
+  overflow:hidden;
+  height:100%;
+  width:100%;
+}
+</style>
+<script language="Javascript">
+//fonction pour ajuster l'iframe pub à la taille du contenu  pour FF et safari
+function musicoveryLOFI_DoFSCommand(command,taille)
+{
+    var myArray = taille.split('x');
+    //alert(myArray[0]);
+    if(command=="resizeFrame")
+    {
+        document.getElementById("framepub").width=myArray[0];
+        document.getElementById("framepub").height=myArray[1];
+        document.getElementById("framepubamz").width=myArray[0];
+        document.getElementById("framepubamz").height=myArray[1];
+    }    
+}
+
+//fonction pour ajuster l'iframe pub à la taille du contenu  pour IE
+function adjustIFrameSize (iframeWindow) {
+	
+  if (iframeWindow.document.height) {
+    var iframeElement = document.getElementById
+(iframeWindow.name);
+//alert("name "+iframeWindow.document.width);
+   iframeElement.style.height = iframeWindow.document.body.scrollHeight +'px';
+   iframeElement.style.width = iframeWindow.document.body.scrollWidth +'px';
+  }
+  else if (document.all) {
+    var iframeElement = document.all[iframeWindow.name];
+    if (iframeWindow.document.compatMode &&
+        iframeWindow.document.compatMode != 'BackCompat') 
+    {
+   iframeElement.style.height = iframeWindow.document.body.scrollHeight +'px';
+   iframeElement.style.width = iframeWindow.document.body.scrollWidth +'px';
+    }
+    else {	      
+	    iframeElement.style.height = iframeWindow.document.body.scrollHeight + 'px';
+	     
+	    iframeElement.style.width = iframeWindow.document.body.scrollWidth + 'px';
+	
+    }
+  }
+}
+
+</script>
+ </head><body scroll="no" bgcolor="#ffffff">
+
+<div style="position: absolute; z-index: -110;">
+
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,65,0" id="musicoveryLOFI" style="position: absolute; left: 0px; top: 0px;" align="left" height="1000" width="1500">
+<param name="allowScriptAccess" value="all">
+<param name="movie" value="musicovery.swf?log=&amp;ie=&amp;ct=pt&amp;ip=193.136.230.240&amp;p=3&amp;lg=pt&amp;nocache=10&amp;pubpe=false&amp;nav=NS&amp;PHPSESSID=o4jvb26i1cgpjeoifn30728s43&amp;idartist=&amp;wii=&amp;light=false&amp;allowuser=true&amp;logoclient=&amp;hideremote=&amp;backremote=false&amp;datedebut=&amp;datefin=&amp;genreNo=">
+<param name="quality" value="high">
+<param name="wmode" value="transparent">
+<param name="bgcolor" value="#FFFFFF"><embed src="Musicovery%20:%20interactive%20webRadio_files/musicovery.swf" wmode="transparent" quality="high" bgcolor="#FFFFFF" name="musicoveryLOFI" swliveconnect="true" allowscriptaccess="all" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="middle" height="1000" width="1500">
+</object>
+</div>
+
+		<div style="position: absolute; top: 60px; right: 0%; z-index: 100;">
+		<iframe style="height: 885px; width: 308px;" src="Musicovery%20:%20interactive%20webRadio_files/pub_002.html" name="framepub" id="framepub" align="right" frameborder="0" height="10" scrolling="no" width="10"></iframe>
+		</div> 
+		<div style="position: absolute; top: 570px; right: 0%; z-index: 110;">
+		<iframe style="height: 885px; width: 308px;" src="Musicovery%20:%20interactive%20webRadio_files/pub_002.html" name="framepubamz" id="framepubamz" align="right" frameborder="0" height="10" scrolling="no" width="10"></iframe>
+		</div> 
+	<div style="position: absolute; bottom: 0px; width: 100%; z-index: 50;">
+	<iframe src="Musicovery%20:%20interactive%20webRadio_files/frameInfo.html" name="footer" id="footer" align="center" frameborder="0" height="30" scrolling="no" width="100%"></iframe>
+	</div> 
+
+
+<script type="text/javascript" src="Musicovery%20:%20interactive%20webRadio_files/ieupdate.js"></script>
+<script src="pub_data/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-384377-1";
+urchinTracker();
+</script>
+
+</body></html>

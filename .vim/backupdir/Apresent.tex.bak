@@ -1,0 +1,602 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+% \documentclass[xcolor=dvipsnames, handout]{beamer}
+
+\usepackage[portuguese]{babel}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[active]{srcltx}
+\usepackage{pstricks,pst-node,pst-text,pst-3d,pst-plot}
+\usepackage[all]{xy}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{amsthm,amsfonts}
+\usepackage{amsmath}
+
+%\usepackage{beamerthemesplit}
+
+\makeindex
+
+%% precisa ser carregado um outro tipo de letra por causa do efeito colateral do pacote T1:
+\usepackage{lmodern} % Fonte "Latin Modern" - A solução óptima para fontes latinas (resolve o problema do T1)
+% \usepackage{times}   % Fonte "Times New"
+% \usepackage{palatino}  % Fonte
+% \usepackage{newcent}   % Fonte
+% \usepackage{bookman}   % Fonte
+% \usepackage{pandora}   % Fonte
+% \usepackage{helvet}    % Fonte
+% \usepackage{avant}     % Fonte
+
+\usepackage{textcomp} % caracteres extra - símbolo do euro por exemplo
+
+%%%%%%%%%% Packages
+
+\usepackage{wrapfig} % figuras ao lado de texto
+
+\usepackage{multirow} % tabelas com células multilinha
+\usepackage{array} % mais opções nas tabelas (m{width}, b{width}, ...)
+
+\usepackage{fancyhdr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{structure}{fg=Cyan!90!black}
+
+
+%\usetheme[hoptionsi]{Boadilla}
+% \usetheme{Singapore}
+
+% \useoutertheme[ options ]{miniframes}
+% \useoutertheme{infolines}
+% \useoutertheme{shadow}
+\useinnertheme{rounded}
+% \useoutertheme{split}
+
+\setbeamercovered{transparent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\todo}[1]{{\sffamily \slshape {{\bfseries \textcolor{red}{TODO: }}\textcolor{blue}{#1}}}}
+%\newcommand{\note}[1]{{\sffamily \slshape \textcolor{red}{#1}}}
+\newcommand{\change}[1]{\textcolor{green}{#1}}
+\newcommand{\lprp}[1]{\left({#1}\right)}
+\newcommand{\abs}[1]{\left|{#1}\right|}
+\newcommand{\lprprect}[1]{\left[{#1}\right]}
+\newcommand{\derivpart}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cl}[1]{\textit{#1}}%%
+\newcommand{\fnc}[1]{\texttt{#1}}
+\newcommand{\lprpchav}[1]{\left\{{#1}\right\}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{teo}{Teorema}
+\newtheorem{exem}{Exemplo}
+
+
+
+\begin{document} %----------------------------------------------------------------------------%
+
+
+\frame{
+\frametitle{
+\vspace{1mm}
+\begin{figure}
+\centering
+\hspace*{-7cm}\includegraphics[bb=0 0 2cm 1cm, scale = 0.30]{cabecalho_final.jpg}
+\end{figure}
+}
+\begin{center}
+\vspace{-1cm}
+
+{\normalsize\textbf{Conceitos Elementares sobre a \\ Geometria da Programação Linear}\par}
+
+% \vfill
+\vspace{1cm}
+%scriptsize
+{\scriptsize
+\textbf{ORIENTADOR}: Professor Luís Nunes Vicente \par}
+\vspace{1cm}
+{\normalsize
+Mário Luís Aires de Oliveira \par}
+
+\vspace{0.5cm}
+
+{\tiny \textrm{ Julho de 2009}}%       % Set date in \large size.
+\end{center}
+}
+
+
+\frame{\frametitle{ÍNDICE}\tableofcontents}
+
+\section{PROGRAMA LINEAR}
+
+\frame{
+\frametitle{PROGRAMA LINEAR}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{FORMAS DE REPRESENTAÇÃO DE UM PROGRAMA LINEAR}}
+\end{center}
+\vspace{0,3cm}
+
+
+
+\begin{itemize}
+
+\item \textbf{Forma canónica} 
+
+\vspace{-0,5cm}
+\begin{eqnarray}
+\mathrm{minimizar} \qquad  z & = & c^Tx \medskip \nonumber \qquad \mathrm{\rightarrow Fun\c c\~ao \; objectivo} \\
+\mathrm{sujeito \; a} \qquad Ax & \geq & b \nonumber \qquad \mathrm{\rightarrow Restrições \; (inequações)}\\
+x & \geq & 0. \nonumber \qquad \mathrm{\rightarrow Condições \; de \; não \; negatividade}
+\end{eqnarray}
+
+\item \textbf{Forma padrão}
+
+\vspace{-0,5cm}
+\begin{eqnarray}
+\mathrm{minimizar} \qquad z &=&c^Tx \nonumber \medskip \\
+\mathrm{sujeito \; a} \qquad  Ax&=&b \nonumber \qquad \mathrm{\rightarrow Restrições \; (equações), \; com \; b\geq 0} \\
+x & \geq & 0. \nonumber
+\end{eqnarray}
+
+\end{itemize}
+
+}
+
+\frame{
+\frametitle{PROGRAMA LINEAR}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{EXEMPLO DE UM PROGRAMA LINEAR}}
+\end{center}
+\vspace{0,3cm}
+
+Exemplo 1:
+\begin{eqnarray*}
+\mathrm{minimizar} \qquad \qquad z & = & x_1-3x_2 \medskip \\
+\mathrm{sujeito \;a} \qquad x_1+x_2 & \geq & 2\\
+-x_1+2x_2 & \leq & 10\\
+x_1 & \leq & 4\\
+x_1 , x_2 & \geq & 0. \\
+\end{eqnarray*}
+
+
+}
+
+
+\section{CONVEXIDADE}
+
+\begin{frame}
+\frametitle{CONVEXIDADE}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{CONJUNTOS EM $\mathbb{R}^n$}}
+\end{center}
+\vspace*{-0,5cm}
+\begin{itemize}
+\item \textbf{Hiperplano} \medskip \\
+Um {\it hiperplano}, em $\mathbb{R}^n$, é um conjunto da forma:
+$$\{x\in \mathbb{R}^n : a^Tx = b \: , \quad a\in \mathbb{R}^n \: , \; a\neq 0 \: , \; b\in \mathbb{R}\}.$$
+
+\textcolor{purple} {Um {\it hiperplano} em $\mathbb{R}^2$ é uma recta. Por exemplo $x_1+x_2=5$.} \medskip \\
+
+
+\item \textbf{Semi-espaço} \medskip \\
+Um hiperplano divide o espaço $\mathbb{R}^n$ em dois {\it semi-espaços}. \medskip \\
+Um \textit{semi-espaço fechado}, em $\mathbb{R}^n$, é um conjunto da forma: $$ \{x\in \mathbb{R}^n : a^Tx \leq b \: , \quad a\in \mathbb{R}^n \: , \; a\neq 0 \: , \; b\in \mathbb{R}\},$$ $$ \{x\in \mathbb{R}^n : a^Tx \geq b \: , \quad a\in \mathbb{R}^n \: , \; a\neq 0 \: , \; b\in \mathbb{R}\}.$$
+\textcolor{purple}{Por exemplo $x_1+x_2\geq1$, representa um semi-espaço em $\mathbb{R}^2$.}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{CONVEXIDADE}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{CONJUNTOS CONVEXOS}}
+\end{center}
+\vspace{-0,2cm}
+\begin{itemize}
+\item \textbf{Combinação linear convexa} \medskip \\
+Uma \textcolor{purple}{combinação linear convexa} de um número finito de pontos $x_1 , x_2 , \ldots , x_n$ é toda a combinação linear  $$ x = \alpha_1x_1 + \alpha_2x_2 + \cdots + \alpha_nx_n$$
+ em que $\alpha_i\geq 0 , i = 1 , \ldots , n$ e $\sum_{i=1}^{n} \alpha_i=1$. \bigskip \\
+
+\item \textbf{Segmento de recta} \medskip \\
+
+É o conjunto de todas as combinações convexas de dois pontos de $\mathbb{R}^n$. \medskip \\
+
+O segmento de recta que une os pontos $x$ e $y$ de $\mathbb{R}^n$ é o conjunto $$\{z\in \mathbb{R}^n : z = \alpha x  + (1-\alpha)y , \ \ 0\leq\alpha\leq1\}.$$
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{CONVEXIDADE}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{CONJUNTOS CONVEXOS}}
+\end{center}
+
+\begin{itemize}
+\item \textbf{Conjunto convexo} \medskip \\
+
+Um conjunto $S\subset \mathbb{R}^n$ diz-se \textit{convexo} se toda a combinação linear convexa de quaisquer dois pontos de $S$ também pertence a $S$.\bigskip \\
+
+$S\subset \mathbb{R}^n$ é um conjunto convexo se o segmento de recta que une quaisquer dois pontos de $S$, está contido em $S$. \\
+\end{itemize}
+
+\begin{figure}
+\vspace{1,2cm}
+\centering
+\hspace*{-5cm}\includegraphics[bb=0 0 4cm 2cm, scale=0.3]{img16.jpg}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{CONVEXIDADE}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{CONJUNTOS CONVEXOS}}
+\end{center}
+
+\textbf{Teorema:} A intersecção finita de conjuntos convexos é um conjunto convexo. \bigskip \\
+\begin{itemize}
+\item A intersecção de hiperplanos é um conjunto convexo. \medskip \\
+\item A intersecção de semi-espaços fechados é um conjunto convexo e fechado.\medskip \\
+\item \textbf{\textcolor{purple}{O conjunto definido pelas restrições de um problema de programação linear é um conjunto convexo e fechado.}}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{CONVEXIDADE}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{CONJUNTOS CONVEXOS}}
+\end{center}
+
+\begin{itemize}
+\item \textbf{Poliedro} \medskip \\
+\textit{Conjunto poliédrico} ou \textit{poliedro} é a intersecção de um número finito de semi-espaços fechados.\bigskip \\
+Um \textit{poliedro} é um conjunto convexo e fechado. \smallskip \\ Pode ser limitado ou não limitado.\bigskip \\
+\item \textbf{Politopo} \medskip \\
+É um poliedro limitado.
+\end{itemize}
+\end{frame}
+
+
+\section{PONTOS BÁSICOS E PONTOS EXTREMOS}
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{ADMISSIBILIDADE}}
+\end{center}
+\begin{itemize}
+\item \textbf{Ponto admissível} \medskip \\
+É um ponto que verifica, simultaneamente, as restrições de um programa linear e as condições de não negatividade.\medskip \\
+\item \textbf{Região admissível} \medskip \\
+Conjunto de todos os pontos admissíveis do problema de programação linear.\medskip \\
+\end{itemize}
+\textbf{\textcolor{purple}{A região admissível de um programa linear pode ser um conjunto limitado ou não limitado.}} \medskip \\
+\textcolor{violet}{A região admissível de um programa linear é um conjunto convexo e fechado.}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{PONTOS BÁSICOS}}
+\end{center}
+Na definição de pontos básicos, o problema de programacão linear está escrito na forma padrão. \medskip \\
+Nesta forma, o vector $x$ tem dimensão $n$ (inclui \textbf{variáveis originais} e \textbf{variáveis de folga}). \medskip \\
+\textcolor{purple}{A matriz das restrições $A$ tem dimensões $m \times n$ com $m < n$.} \medskip \\
+Considera-se que $A$ tem as $m$ linhas linearmente independentes, assim tem uma submatriz quadrada $m\times m$ não singular. \medskip \\
+\textbf{\textcolor{purple}{A matriz das restrições tem uma submatriz quadrada de ordem $m$, cujas $m$ colunas são linearmente independentes.}}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{PONTOS BÁSICOS}}
+\end{center}
+
+As $m$ variáveis correspondentes a essas colunas designam-se por \textbf{\textcolor{purple}{variáveis básicas}} e as restantes $n-m$ por \textbf{\textcolor{purple}{variáveis não básicas}}. \medskip \\
+Atribuindo o valor zero às variáveis não básicas, as variáveis básicas virão univocamente determinadas. \medskip \\
+O vector $x$ é constituído por $n-m$ variáveis não básicas, que tomam todas o valor zero, e por $m$ variáveis básicas. \medskip \\
+Os pontos $x$ assim obtidos são os \textbf{\textcolor{purple}{pontos básicos}} do programa linear. \medskip \\
+Se estes pontos verificam também as condições de não negatividade, são \textbf{\textcolor{purple}{pontos básicos admissíveis}}. \\
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{PONTOS BÁSICOS}}
+\end{center}
+Região admissível do Exemplo 1 (politopo).
+\begin{figure}
+\vspace{3,5cm}
+\centering
+\hspace{-7cm}\includegraphics[bb=0 0 4cm 4cm, scale=0.18]{img23.jpg}
+\end{figure}
+
+O problema tem 9 pontos básicos, dos quais 5 são admissíveis ($x_a,\ x_b,\ x_c,\ x_d,\ x_e$) e 4 não admissíveis ($x_f,\ x_g,\ x_h,\ x_o$).
+
+\end{frame}
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{PONTOS BÁSICOS}}
+\end{center}
+Restrições do Exemplo 1 escritas na forma padrão \\
+
+\begin{displaymath}
+\left \{
+  \begin{array}{lcl}
+  x_1+x_2-x_3 & = & 2 \\
+  -x_1+2x_2 +x_4 & = & 10 \\
+  x_1 + x_5 & = & 4
+  \end{array}
+\right.
+\vspace{0,3cm}
+\end{displaymath}
+
+Observa-se que o ponto $x_c$ corresponde à intersecção das rectas $x_1=0$ e $-x_1+x_2=10$. \medskip \\
+Podemos concluir que a variável $x_4$ tem que ser zero. Assim, as variáveis não básicas são $x_1$ e $x_4$. \medskip \\
+O ponto $x_f$ corresponde à intersecção das rectas $x_1=4$ e $x_1+x_2=2$, pelo que as variáveis $x_3$ e $x_5$ têm que ser zero, sendo estas as variáveis não básicas.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{PONTOS EXTREMOS}}
+\end{center}
+
+Um ponto $x \in S $ diz-se \textbf{\textit{ponto extremo} (ou \textit{vértice})} de um conjunto convexo $S \subset \mathbb{R}^n$, se $x$ não pode ser obtido como combinação linear convexa de dois outros pontos de $S$. \bigskip \\
+
+Um ponto $x \in S$ é um \textcolor{purple}{ponto extremo} de um conjunto convexo $S$ se $x$ não pertencer a nenhum segmento de recta unindo dois outros pontos quaisquer de $S$.\bigskip \\
+
+\textcolor{purple}{A definição de ponto extremo aplica-se a qualquer conjunto convexo, em particular, à região admissível de um programa linear.} \medskip \\
+
+\end{frame}
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{DIRECÇÃO DE ILIMITAÇÃO}}
+\end{center}
+
+O conceito de direcção de ilimitação utiliza-se para descrever gometricamente a região admissível de um programa linear, quando representa um conjunto não limitado. \bigskip \\
+
+Diz-se que $d \neq 0$ é uma \textcolor{purple}{\textit{direcção de ilimitação}} de um conjunto convexo $S$ se $$x+ \gamma d \in S \ \ \mathrm{para \; todo} \; x \in S \; e \; \gamma \geq 0.$$
+
+Tem-se que $d \neq 0$ é uma direcção de ilimitação se toda a semi-recta (positiva) com  origem num ponto $x$ de $S$ e direcção $d$ está em $S$. \\
+\end{frame}
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{DIRECÇÃO DE ILIMITAÇÃO}}
+\end{center}
+\begin{itemize}
+\item \textbf{Quando a região admissível é um politopo} \medskip \\
+Qualquer ponto admissível pode ser representado por uma combinação linear convexa de pontos extremos. \bigskip \\
+\item \textbf{Quando a região admissível $S$ é um poliedro não limitado}  \\
+\vspace{0,3cm}
+Qualquer ponto de $S$ pode ser expresso como a soma de uma direcção de ilimitação e uma combinação linear convexa de pontos extremos de $S$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{PONTOS BÁSICOS E PONTOS EXTREMOS}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{DIRECÇÃO DE ILIMITAÇÃO}}
+\end{center}
+
+Exemplo 2:
+\vspace{-0,5cm}
+\begin{eqnarray*}
+\mathrm{minimizar} \qquad \qquad z & = & x_1-5x_2 \medskip \\
+\mathrm{sujeito \;a} \qquad x_1+x_2 & \geq & 2\\
+-x_1+2x_2 & \leq & 10\\
+x_1 , x_2 & \geq & 0. \\
+\vspace{0cm}
+\end{eqnarray*}
+Região admissivel do exemplo anterior (poliedro não limitado). \\
+
+\begin{figure}[!h]
+\vspace{2cm}
+\centering
+\hspace{-6cm}\includegraphics[bb=0 0 4cm 4cm, scale=0.15]{img24.jpg}
+\end{figure}
+
+\end{frame}
+
+
+\section{OPTIMALIDADE}
+
+\begin{frame}
+\frametitle{OPTIMALIDADE}
+\vspace{-0,5cm}
+\begin{center}
+\textbf{\textcolor{red}{CONCEITOS}}
+\end{center}
+
+\begin{itemize}
+\item \textbf{Solução óptima} \medskip \\
+É um ponto admissível que minimiza (ou maximiza) a função objectivo de um programa linear. \bigskip
+\item \textbf{Valor óptimo} \medskip \\
+É o valor da função objectivo, num ponto que seja uma solução óptima.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{OPTIMALIDADE}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{TIPOS DE PROGRAMAS LINEARES}}
+\end{center}
+
+\begin{itemize}
+\item \textbf{Programa linear inadmissível} \medskip \\
+A região admissível é o conjunto vazio (não há pontos admissiveis). \medskip \\
+O problema não tem solução óptima. \bigskip
+\item \textbf{Programa linear ilimitado} \medskip \\
+A região admissível é um conjunto não limitado.\medskip \\
+Nenhum ponto admissível é minimizante de função objectivo. \medskip \\
+O problema não tem solução óptima finita. Tem solução não limitada.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{OPTIMALIDADE}
+\vspace{0cm}
+\begin{center}
+\textbf{\textcolor{red}{TIPOS DE PROGRAMAS LINEARES}}
+\end{center}
+
+\begin{itemize}
+\item \textbf{Programa linear com solução óptima finita} \medskip \\
+A região admissível pode ser um politopo ou um conjunto não limitado. O problema tem solução óptima.\smallskip \\
+\end{itemize}
+\textbf{Teorema:} Se um programa linear tem uma solução óptima finita então tem um ponto extremo da região admissível que é uma solução óptima. \medskip \\
+
+\textcolor{purple}{Um programa linear com solução óptima, pode ter uma única solução óptima ou infinitas soluções óptimas e pelo menos um ponto extremo é solução óptima.} \medskip \\
+No caso da função objectivo atingir o valor óptimo em mais que um ponto extremo, toda a combinação linear convexa desses pontos é ainda uma solução óptima.
+
+\end{frame}
+
+
+\section{PROGRAMAÇÃO LINEAR EM $\mathbb{R}^2$}
+
+\frame{
+\frametitle{PROGRAMAÇÃO LINEAR EM $\mathbb{R}^2$}
+\begin{center}
+\textbf{\textcolor{red}{SIGNIFICADOS EM $\mathbb{R}^2$}}
+\end{center}
+
+A representação geométrica, das restrições de desigualdade corresponde à representação de conjuntos planos (\textcolor{purple}{semiplanos fechados}). \medskip \\
+
+A região admissível de um programa linear pode ser \smallskip
+\begin{itemize}
+\item Um conjunto limitado (\textbf{politopo}) \medskip \\
+Em $\mathbb{R}^2$, é representado por um \textbf{\textcolor{purple}{polígono convexo.}}  \bigskip \\
+\item Um conjunto ilimitado (\textbf{poliedro não limitado}) \medskip \\
+Em $\mathbb{R}^2$, é representado por uma \textbf{\textcolor{purple}{linha poligonal convexa e o seu interior.}} \medskip \\
+\end{itemize}
+Ambos os conjuntos (politopos ou poliedros) são convexos.
+
+}
+
+\begin{frame}
+\frametitle{PROGRAMAÇÃO LINEAR EM $\mathbb{R}^2$}
+\begin{center}
+\textbf{\textcolor{red}{SIGNIFICADOS EM $\mathbb{R}^2$}}
+\end{center}
+
+O ponto $J(3,5)$ pertence ao segmento de recta de extremos $F(2,4)$ e $G(4,6)$. \\ Não é um ponto extremo (vértice) do conjunto $S$. \medskip \\
+\textcolor{purple}{O vértice $D(4,7)$ do polígono é um ponto extremo} do conjunto $S$, pois não pertence a nenhum segmento de recta unindo dois outros quaisquer pontos de $S$. \medskip \\
+
+\begin{figure}[!h]
+\begin{minipage}[b]{0.45\linewidth}
+\vspace{3cm}
+\centering
+\hspace{-5cm}\includegraphics[bb=0 0 1cm 1cm, scale=0.18]{img46.jpg}
+\end{minipage} \hfill
+\begin{minipage}[b]{0.45\linewidth}
+\vspace{0cm}
+\centering
+\hspace{-5cm}\includegraphics[bb=0 0 1cm 1cm, scale=0.18]{img47.jpg}
+\end{minipage}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{PROGRAMAÇÃO LINEAR EM $\mathbb{R}^2$}
+\begin{center}
+\textbf{\textcolor{red}{SIGNIFICADOS EM $\mathbb{R}^2$}}
+\end{center}
+
+\textcolor{purple}{O vector $\overrightarrow{d_1}=(1,0)$ é uma direcção de ilimitação} de $S$, pois toda a semi-recta com origem num ponto admissível $P$ e direcção $\overrightarrow{d_1}$ está em $S$. \medskip \\
+O vector $\vec{u}=(2,2)$ não é uma direcção de ilimitação de $S$, porque, por exemplo, a semi-recta com origem no ponto admissível $(2,4)$ e direcção $\vec{u}$ não está em $S$. \\
+
+\begin{figure}[!h]
+\begin{minipage}[b]{0.45\linewidth}
+\vspace{3cm}
+\centering
+\hspace{-4cm}\includegraphics[bb=0 0 1cm 1cm, scale=0.15]{img48.jpg}
+\end{minipage} \hfill
+\begin{minipage}[b]{0.45\linewidth}
+\vspace{0cm}
+\centering
+\hspace{-4cm}\includegraphics[bb=0 0 1cm 1cm, scale=0.15]{img50.jpg}
+\end{minipage}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{PROGRAMAÇÃO LINEAR EM $\mathbb{R}^2$}
+\begin{center}
+\textbf{\textcolor{red}{REPRESENTAÇÕES GRÁFICAS EM $\mathbb{R}^2$}}
+\end{center}
+Resolução geométrica do problema do Exemplo 1. \\
+
+\begin{figure}[!h]
+\vspace{3,5cm}
+\centering
+\hspace{-7cm}\includegraphics[bb=0 0 2cm 2cm, scale=0.2]{img40.jpg}
+\end{figure}
+
+Programa linear com uma única solução óptima.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{PROGRAMAÇÃO LINEAR EM $\mathbb{R}^2$}
+\begin{center}
+\textbf{\textcolor{red}{REPRESENTAÇÕES GRÁFICAS EM $\mathbb{R}^2$}}
+\end{center}
+Resolução geométrica do problema do Exemplo 2. \\
+
+\begin{figure}[!h]
+\vspace{3cm}
+\centering
+\hspace{-7cm}\includegraphics[bb=0 0 2cm 2cm, scale=0.15]{img45.jpg}
+\end{figure}
+
+Programa linear ilimitado.
+\end{frame}
+
+
+
+
+
+\end{document}
+
+

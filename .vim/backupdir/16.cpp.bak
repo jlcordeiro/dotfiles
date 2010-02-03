@@ -1,0 +1,101 @@
+#include <iostream>
+#include <stdint.h>
+#include <sstream>
+#include <math.h>
+
+#include <stdlib.h>
+#include <stdio.h>
+
+using namespace std;
+
+    bool isPrime (int num){
+        if (num <=1)
+            return false;
+        else if (num == 2)         
+            return true;
+        else if (num % 2 == 0)
+            return false;
+        else
+        {
+            bool prime = true;
+            int divisor = 3;
+            double num_d = static_cast<double>(num);
+            int upperLimit = static_cast<int>(sqrt(num_d) +1);
+
+            while (divisor <= upperLimit)
+            {
+                if (num % divisor == 0)
+                    prime = false;
+                divisor +=2;
+            }
+            return prime;
+        }
+    }
+
+int numdigits(int num){
+
+    int dig=1;
+
+    while( (num=(int)num/10) > 0 )
+        dig++;
+
+    return dig;
+}
+
+void int_to_char(int n, char result[], int dn, int dr){
+
+    result[0]='0';
+
+    for (int i=1; i<=dn; i++){
+        result[i]='1'+(n%10-1);
+        n/=10;
+    }
+    for (int i=dn+1; i<=dr; i++){
+        result[i]='0';
+    }
+}
+
+void mysum(char c1[], char c2[], char res[], int dr){
+    int z=0, v=0;
+    for (int i=dr-1; i>-1; i--){
+        z=(int)(c1[i]-'0')+(int)(c2[i]-'0');
+
+        res[i]='0'+z%10+v;
+        v=(int)z/10;
+    }
+}
+
+int main(){
+
+    int n1=12345;
+    int n2=2495;
+
+    int d1=numdigits(n1), d2=numdigits(n2), dr=1;
+
+    d2>d1?dr+=d2:dr+=d1;
+
+    char c1[dr+1], c2[dr+1];
+
+
+    int_to_char(n1,c1,d1,dr);
+    int_to_char(n2,c2,d2,dr);
+    c1[dr]=c2[dr]='\0';
+
+
+    char res[dr+1];
+
+    mysum(c1,c2,res, dr);
+
+
+    cout << endl << endl;
+    cout << c1 << endl;
+    cout << c2 << endl;
+    cout << res << endl;
+
+
+    // 	for (int i=1;i<20;i++)
+    // 		if(isPrime(i))
+    // 			cout << i << endl;
+
+    return 1;
+}

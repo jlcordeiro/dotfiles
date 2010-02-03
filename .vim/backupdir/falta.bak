@@ -1,0 +1,9 @@
+mkinitcpio
+
+adicionar ahci modulo + retirar udev
+
+
+
+
+
+ext4

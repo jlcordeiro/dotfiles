@@ -1,0 +1,68 @@
+#
+# /etc/rc.conf - Main Configuration for Arch Linux
+#
+# -----------------------------------------------------------------------
+# LOCALIZATION
+#
+# LOCALE: available languages can be listed with the 'locale -a' command
+# HARDWARECLOCK: set to "UTC" or "localtime"
+# USEDIRECTISA: use direct I/O requests instead of /dev/rtc for hwclock
+# TIMEZONE: timezones are found in /usr/share/zoneinfo
+# KEYMAP: keymaps are found in /usr/share/kbd/keymaps
+# CONSOLEFONT: found in /usr/share/kbd/consolefonts (only needed for non-US)
+# CONSOLEMAP: found in /usr/share/kbd/consoletrans
+# USECOLOR: use ANSI color sequences in startup messages
+LOCALE="pt_PT.utf8"
+HARDWARECLOCK="localtime"
+USEDIRECTISA="yes"
+TIMEZONE="Europe/Lisbon"
+KEYMAP="pt-latin9.map.gz"
+CONSOLEFONT="Agafari-16"
+CONSOLEMAP=
+USECOLOR="yes"
+
+# MOD_AUTOLOAD: Allow autoloading of modules at boot and when needed
+MOD_AUTOLOAD="yes"
+MODULES=(!r8169 ath_hal ath_pci snd-hda-intel)
+#MODULES=(!r8169 ath_hal ath_pci snd-hda-intel)
+#MODULES=(r8169 ath_hal ath_pci wlan snd snd-hda-intel soundcore !hal !fam acpi_cpufreq)
+
+# Scan for LVM volume groups at startup, required if you use LVM
+USELVM="no"
+
+# -----------------------------------------------------------------------
+# NETWORKING
+#
+# HOSTNAME: Hostname of machine. Should also be put in /etc/hosts
+HOSTNAME="localhost"
+
+# Interfaces to start at boot-up (in this order)
+# Declare each interface then list in INTERFACES
+#   - no hyphens in your interface names - Bash doesn't like it
+# 
+# DHCP:     Set your interface to "dhcp" (eth0="dhcp")
+# Wireless: See network profiles below
+#
+eth0="eth0 192.168.0.2 netmask 255.255.255.0 broadcast 192.168.0.255"
+INTERFACES=(eth0)
+
+# Routes to start at boot-up (in this order)
+# Declare each route then list in ROUTES
+gateway="default gw 192.168.0.1"
+ROUTES=(!gateway)
+ 
+# Enable these network profiles at boot-up.  These are only useful
+# if you happen to need multiple network configurations (ie, laptop users)
+#   - set to 'menu' to present a menu during boot-up (dialog package required)
+#   - prefix an entry with a ! to disable it
+#
+# Network profiles are found in /etc/network.d
+# This now requires the netcfg package
+#
+#NETWORKS=(main)
+
+# DAEMONS
+#   - prefix a daemon with a ! to disable it
+#   - prefix a daemon with a @ to start it up in the background
+DAEMONS=(@alsa syslog-ng @hal @network !netfs @crond @wicd @keytouch)
+#DAEMONS=(alsa syslog-ng hal network netfs crond !dbus wicd keytouch)

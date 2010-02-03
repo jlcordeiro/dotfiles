@@ -1,0 +1,13 @@
+#
+# /etc/hosts: static lookup table for host names
+#
+127.0.0.1	localhost.localdomain	localhost
+
+#<ip-address>	<hostname.domain.org>	<hostname>
+127.0.0.1		localhost.localdomain	localhost
+
+
+80.67.5.82 phantomp2p.com phantom
+80.67.5.82 dk.phantomp2p.com phantom
+
+# End of file

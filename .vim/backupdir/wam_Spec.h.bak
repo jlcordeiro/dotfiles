@@ -1,0 +1,73 @@
+
+#include "wam_Spec_wamsim.h"
+// #include "wam_Spec.h_mine"
+
+#ifndef theta1
+#define theta1 0
+#define theta2 0                                                                                                    
+#define theta3 0
+#define theta4 0
+#define theta5 -PI/2
+#define theta6 0
+#define theta7 0
+#endif
+
+#ifndef aTool
+#define aTool 0
+#define dTool 0
+#define alphaTool 0
+#define thetaTool 0
+#endif
+
+#ifndef Fricviscous1
+#define FricviscousExample 0
+#define FricdynamicExample 0
+#define FricstaticExample 0
+#define  FricEpsilonExampleA 0
+#define  FricEpsilonExampleB 0
+// Joint 1
+#define Fricviscous1 FricviscousExample
+#define Fricdynamic1 FricdynamicExample
+#define Fricstatic1 FricstaticExample
+#define FricEpsilon1 FricEpsilonExampleA
+// Joint 2
+#define Fricviscous2 FricviscousExample
+#define Fricdynamic2 FricdynamicExample
+#define Fricstatic2 FricstaticExample
+#define FricEpsilon2 FricEpsilonExampleA
+// Joint 3
+#define Fricviscous3 FricviscousExample
+#define Fricdynamic3 FricdynamicExample
+#define Fricstatic3 FricstaticExample
+#define FricEpsilon3 FricEpsilonExampleA
+// Joint 4
+#define Fricviscous4 FricviscousExample
+#define Fricdynamic4 FricdynamicExample
+#define Fricstatic4 FricstaticExample
+#define FricEpsilon4 FricEpsilonExampleA
+// Joint 5
+#define Fricviscous5 FricviscousExample
+#define Fricdynamic5 FricdynamicExample
+#define Fricstatic5 FricstaticExample
+#define FricEpsilon5 FricEpsilonExampleB
+// Joint 6
+#define Fricviscous6 FricviscousExample
+#define Fricdynamic6 FricdynamicExample
+#define Fricstatic6 FricstaticExample
+#define FricEpsilon6 FricEpsilonExampleB
+// Joint 7
+#define Fricviscous7 FricviscousExample
+#define Fricdynamic7 FricdynamicExample
+#define Fricstatic7 FricstaticExample
+#define FricEpsilon7 FricEpsilonExampleB
+#endif
+
+#ifndef KQ
+// Joints restrictions parameters for simulation (fictional parameters)
+#define KQ 0 // spring constant
+#define KQDA 0  // dump constant (bigger)
+#define KQDB 0   // dump constant (smaller)
+#endif
+
+
+
