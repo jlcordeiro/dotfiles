@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
 	<menu id="root-menu" label="Openbox 3">
-		<menu id="root-menu-38546" label="New Menu">
-			<menu execute="sh ~/.config/openbox/scripts/date-menu.sh" id="pipe-5852" label="cal"/>
-			<menu execute="~/.config/openbox/scripts/processes.py" id="pipe-515456" label="Processes"/>
-		</menu>
-		<item label="urxvt">
+		<item label="chrome">
 			<action name="Execute">
 				<execute>
-					urxvt
-				</execute>
-			</action>
-		</item>
-		<item label="firefox">
-			<action name="Execute">
-				<execute>
-					firefox
+					google-chrome
 				</execute>
 			</action>
 		</item>
