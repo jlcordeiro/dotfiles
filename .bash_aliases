@@ -18,9 +18,16 @@ alias l='ls -CF'
 
 alias gvim='gvim -p'
 
+# ack
+alias cack='clear; ack'
+
 # pbcopy
 
 if [ ! $(uname -s) = "Darwin" ]; then
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
 fi
+
+# network stuff
+
+alias eip='wget -q -O - checkip.dyndns.org | sed -e "s/.*Current IP Address: //" -e "s/<.*$//" '
