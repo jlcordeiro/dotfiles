@@ -111,6 +111,9 @@ Bundle 'gmarik/vundle'
 
 " My bundles here:
 Bundle 'sjl/gundo.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'plasticboy/vim-markdown'
 " Colorscheme bundles
 Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
