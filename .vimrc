@@ -47,57 +47,6 @@ set backup
 set backupext=.bak
 set backupdir=~/.vim/backupdir
 
-
-"Switch between .cpp an .h files
-map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-map <F3> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
-map <F2> :vsp,<CR>
-
-
-
-" ctags
-" install ctags
-" install taglist
-
-"Build ctags files recursively starting by the current directory to use with omnicomplete. 
-map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-set tags=tags;/
-"Shows Taglist window
-nnoremap <silent> <F8> :TlistToggle<CR>
-set completeopt=menu
-
-
-" omnicpp
-" use global scope search
-let OmniCpp_GlobalScopeSearch = 1
-" 0 = namespaces disabled ; 1 = search namespaces in the current buffer ; 2 = search namespaces in the current buffer and in included files
-let OmniCpp_NamespaceSearch = 2
-" 0 = auto ; 1 = always show all members
-let OmniCpp_DisplayMode = 1
-" " 0 = don't show scope in abbreviation ; 1 = show scope in abbreviation and remove the last column
-" let OmniCpp_ShowScopeInAbbr = 0
-" " 0 = don't display prototype in abbreviation ; 1 = display prototype in abbreviation part of the popup menu.
-" let OmniCpp_ShowPrototypeInAbbr = 1
-" 0 = hide access ; 1 = show access information ('+', '#', '-') in the popup menu.
-let OmniCpp_ShowAccess = 1
-let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat "highlight de erros mas não warnings
-"
-" " This option can be use if you don't want to parse using namespace
-" declarations in included files and want to add namespaces that are always
-" used in your project.
-" let OmniCpp_DefaultNamespaces = ["std"]
-"
-" " Complete Behaviour
-" let OmniCpp_MayCompleteDot = 0
-" let OmniCpp_MayCompleteArrow = 0
-" let OmniCpp_MayCompleteScope = 0
-"
-"  When 'completeopt' does not contain "longest", Vim automatically select the
-" first entry of the popup menu. You can change this behaviour with the
-" OmniCpp_SelectFirstItem option.
-" let OmniCpp_SelectFirstItem = 0 
-
-
 " Vundle
 set nocompatible              " be iMproved
 filetype off                  " required!
@@ -161,4 +110,3 @@ set guioptions-=r  "remove right-hand scroll bar
 nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
 nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
-
