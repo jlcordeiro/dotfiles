@@ -40,24 +40,6 @@ au FileType tex let b:comment_leader = '% '
 noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohl<CR>
 noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohl<CR>
 
-" gui options 
-
-"colourscheme
-colorscheme molokai 
-
-"font
-set guifont=Liberation\ Mono\ 10
-
-"hide toolbars 
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-
-"set keys to show/hide toolbars 
-nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
-nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
-nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
-
 syntax on
 
 "backup
@@ -129,6 +111,8 @@ Bundle 'gmarik/vundle'
 
 " My bundles here:
 Bundle 'sjl/gundo.vim'
+" Colorscheme bundles
+Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
 
 " --- Examples
@@ -156,3 +140,22 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle commands are not allowed.
+"
+" gui options 
+
+"colourscheme
+colorscheme molokai 
+
+"font
+set guifont=Liberation\ Mono\ 10
+
+"hide toolbars 
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+
+"set keys to show/hide toolbars 
+nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+
