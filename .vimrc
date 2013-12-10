@@ -30,6 +30,9 @@ set hlsearch
 set mouse=a
 " size of the command line history
 set history=100
+"show invisibles
+set list
+set listchars=tab:▸\ ,eol:¬
 
 "Open epub files
 au BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
