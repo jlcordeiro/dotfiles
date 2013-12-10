@@ -4,9 +4,9 @@ syntax on
 " auto indent
 set autoindent
 set cindent
-set shiftwidth=3
+set shiftwidth=4
 " insert N space characters instead of tab
-set tabstop=3
+set tabstop=4
 " insert real tab with CTRL<KEY>
 set expandtab
 
@@ -30,6 +30,9 @@ set hlsearch
 set mouse=a
 " size of the command line history
 set history=100
+
+"Open epub files
+au BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
 
 "Commenting and Un-Commenting code
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
