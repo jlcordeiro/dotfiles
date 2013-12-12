@@ -70,6 +70,8 @@ Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'plasticboy/vim-markdown'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'scrooloose/syntastic'
 " Colorscheme bundles
 Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
@@ -88,6 +90,11 @@ Bundle 'altercation/vim-colors-solarized'
 filetype plugin indent on     " required!
 """ Vundle
 
+""" EasyMotion
+let g:EasyMotion_leader_key = '<Leader>'
+
+""" Syntastic
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 
 """ gui options 
 colorscheme molokai 
