@@ -31,3 +31,9 @@ fi
 # network stuff
 
 alias eip='wget -q -O - checkip.dyndns.org | sed -e "s/.*Current IP Address: //" -e "s/<.*$//" '
+
+#utils
+
+alias sss='xfce4-screenshooter'
+alias r="sshlauncher.py"
+
