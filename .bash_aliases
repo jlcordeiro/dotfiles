@@ -16,7 +16,13 @@ alias l='ls -CF'
 
 # vi
 
-alias gvim='gvim -p'
+if [ "$(uname)" '==' "Darwin" ]; then
+    alias gvim='mvim -p'
+    alias mvim='mvim -p'
+else
+    alias gvim='gvim -p'
+    alias mvim='gvim -p'
+fi
 
 # ack
 alias cack='clear; ack'
