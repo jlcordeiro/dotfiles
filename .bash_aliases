@@ -24,6 +24,8 @@ else
     alias mvim='gvim -p'
 fi
 
+alias evim='evim -u ~/.evimrc'
+
 # ack
 alias cack='clear; ack'
 
@@ -42,4 +44,3 @@ alias eip='wget -q -O - checkip.dyndns.org | sed -e "s/.*Current IP Address: //"
 
 alias sss='xfce4-screenshooter'
 alias r="sshlauncher.py"
-

@@ -1,0 +1,25 @@
+" syntax
+syntax on
+
+" make backspace work like most other apps
+set backspace=indent,eol,start
+"visual bell instead of speaker
+set visualbell
+"wrap lines
+set wrap
+"show cursor position
+set ruler
+" keep search matches highlighted
+set hlsearch
+"show invisibles
+set list
+set listchars=tab:▸\ ,eol:¬
+
+"backup
+set backup
+set backupext=.bak
+set backupdir=~/.vim/backupdir
+
+""" gui options 
+colorscheme delek
+set guifont=Liberation\ Mono\ 10
