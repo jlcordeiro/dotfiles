@@ -75,6 +75,7 @@ Bundle 'scrooloose/syntastic'
 " Colorscheme bundles
 Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'Mustang2'
 
 " --- Examples
 " original repos on GitHub
@@ -97,7 +98,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 
 """ gui options 
-colorscheme molokai 
+colorscheme Mustang
 set guifont=Liberation\ Mono\ 10
 
 "hide toolbars 
