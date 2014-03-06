@@ -115,4 +115,4 @@ nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
 
 "markdown preview
-nnoremap <F12>m :exe ':silent !markdown % > /tmp/markdown_temp.html && google-chrome /tmp/markdown_temp.html'<CR>
+nnoremap <F12>m :exe ':silent !markdown % > @%.html && google-chrome @%.html'<CR>
