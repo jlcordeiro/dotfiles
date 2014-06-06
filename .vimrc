@@ -72,10 +72,10 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/syntastic'
+Bundle 'myusuf3/numbers.vim'
 " Colorscheme bundles
 Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'Mustang2'
 
 " --- Examples
 " original repos on GitHub
@@ -98,7 +98,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 
 """ gui options 
-colorscheme Mustang
+colorscheme molokai 
 set guifont=Liberation\ Mono\ 10
 
 "hide toolbars 
@@ -115,4 +115,4 @@ nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
 
 "markdown preview
-nnoremap <F12>m :exe ':silent !markdown % > @%.html && google-chrome @%.html'<CR>
+nnoremap <F12>m :exe ':silent !markdown % > /tmp/markdown_temp.html && google-chrome /tmp/markdown_temp.html'<CR>
