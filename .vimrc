@@ -73,7 +73,12 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/syntastic'
 Bundle 'myusuf3/numbers.vim'
-Bundle 'msanders/snipmate.vim'
+" snipmate bundle
+"Bundle 'msanders/snipmate.vim'
+Bundle 'tomtom/tlib_vim'
+Bundle 'marcweber/vim-addon-mw-utils'
+Bundle 'garbas/vim-snipmate'
+Bundle 'jlcordeiro/vim-snippets'
 " Colorscheme bundles
 Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
