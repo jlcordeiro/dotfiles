@@ -103,6 +103,9 @@ let g:EasyMotion_leader_key = '<Leader>'
 """ Syntastic
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 
+""" Markdown
+let g:vim_markdown_folding_disabled=1
+
 """ gui options 
 colorscheme molokai 
 set guifont=Liberation\ Mono\ 10
