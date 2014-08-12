@@ -44,3 +44,4 @@ alias eip='wget -q -O - checkip.dyndns.org | sed -e "s/.*Current IP Address: //"
 
 alias sss='xfce4-screenshooter'
 alias r="sshlauncher.py"
+alias pomodoro='sh ~/.pomodoro.sh 25 "Pomodoro" "Starting. 25 minutes left." "Stop working."'
