@@ -73,6 +73,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/syntastic'
 Bundle 'myusuf3/numbers.vim'
+Bundle 'fatih/vim-go'
 " snipmate bundle
 "Bundle 'msanders/snipmate.vim'
 Bundle 'tomtom/tlib_vim'
