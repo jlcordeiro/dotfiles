@@ -1,3 +1,5 @@
+*.swp
+
 .vim/backupdir
 .vim/bundle
 .vim/.netrwhist
