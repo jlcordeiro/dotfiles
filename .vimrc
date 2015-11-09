@@ -110,6 +110,7 @@ let g:vim_markdown_folding_disabled=1
 """ gui options 
 colorscheme molokai 
 set guifont=Liberation\ Mono\ 10
+set t_Co=256
 
 "hide toolbars 
 set guioptions-=m  "remove menu bar
