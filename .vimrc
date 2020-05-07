@@ -41,7 +41,7 @@ au BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
 au FileType vim let b:comment_leader = '" '
 au FileType c,cpp,java let b:comment_leader = '// '
-au FileType sh,make let b:comment_leader = '# '
+au FileType sh,make,py let b:comment_leader = '# '
 au FileType tex let b:comment_leader = '% '
 noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohl<CR>
 noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohl<CR>
@@ -109,21 +109,12 @@ let g:vim_markdown_folding_disabled=1
 
 """ gui options 
 colorscheme molokai 
-set guifont=Liberation\ Mono\ 10
 set t_Co=256
 
 "hide toolbars 
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-
-"set keys to show/hide toolbars 
-nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
-nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
-nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+"set guioptions-=m  "remove menu bar
+"set guioptions-=T  "remove toolbar
+"set guioptions-=r  "remove right-hand scroll bar
 
 "nerdtree
 let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
-
-"markdown preview
-nnoremap <F12>m :exe ':silent !markdown % > /tmp/markdown_temp.html && google-chrome /tmp/markdown_temp.html'<CR>
