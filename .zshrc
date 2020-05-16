@@ -31,10 +31,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
-# Todo.txt
-alias t='todo.sh -d /home/joao/Dropbox/todo.txt_cli-2.9/todo.cfg'
-
-
 # Aliases
 . ~/.bash_aliases
 . ~/.bash_aliases_private
+. ~/.bash_profile
