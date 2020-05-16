@@ -35,13 +35,3 @@ if [ ! $(uname -s) = "Darwin" ]; then
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
 fi
-
-# network stuff
-
-alias eip='wget -q -O - checkip.dyndns.org | sed -e "s/.*Current IP Address: //" -e "s/<.*$//" '
-
-#utils
-
-alias sss='xfce4-screenshooter'
-alias r="sshlauncher.py"
-alias pomodoro='sh ~/.pomodoro.sh 25 "Pomodoro" "Starting. 25 minutes left." "Stop working."'
