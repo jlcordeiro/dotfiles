@@ -24,6 +24,8 @@ set incsearch
 set showcmd
 "show cursor position
 set ruler
+" highlight cursor line
+set cursorline
 " keep search matches highlighted
 set hlsearch
 " mouse at all times
@@ -118,3 +120,8 @@ set t_Co=256
 
 "nerdtree
 let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
