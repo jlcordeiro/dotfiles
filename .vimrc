@@ -1,4 +1,3 @@
-" syntax
 syntax on
 
 " auto indent
@@ -48,8 +47,6 @@ au FileType tex let b:comment_leader = '% '
 noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohl<CR>
 noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohl<CR>
 
-syntax on
-
 "backup
 set backup
 set backupext=.bak
@@ -72,16 +69,13 @@ Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/syntastic'
 Bundle 'myusuf3/numbers.vim'
-Bundle 'fatih/vim-go'
-" snipmate bundle
-"Bundle 'msanders/snipmate.vim'
-Bundle 'tomtom/tlib_vim'
+Bundle 'nvie/vim-flake8'
+"Bundle 'tomtom/tlib_vim'
 Bundle 'marcweber/vim-addon-mw-utils'
-Bundle 'garbas/vim-snipmate'
-Bundle 'jlcordeiro/vim-snippets'
+" Bundle 'jlcordeiro/vim-snippets'
 " Colorscheme bundles
 Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
@@ -98,10 +92,6 @@ Bundle 'altercation/vim-colors-solarized'
 " ---
 
 filetype plugin indent on     " required!
-""" Vundle
-
-""" EasyMotion
-let g:EasyMotion_leader_key = '<Leader>'
 
 """ Syntastic
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
@@ -125,3 +115,8 @@ let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
+
+" Python / PEP8
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+let python_highlight_all=1
+let g:flake8_cmd="python3 -m pyflakes"
