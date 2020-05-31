@@ -48,9 +48,9 @@ noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<
 noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohl<CR>
 
 "backup
-set backup
-set backupext=.bak
-set backupdir=~/.vim/backupdir
+"set backup
+"set backupext=.bak
+"set backupdir=~/.vim/backupdir
 
 """ Vundle
 " see :h vundle for more details or wiki for FAQ
@@ -68,6 +68,7 @@ Bundle 'gmarik/vundle'
 Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'plasticboy/vim-markdown'
 "Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/syntastic'
@@ -93,8 +94,33 @@ Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on     " required!
 
+
+""" status
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#CursorColumn#
+set statusline+=%{StatuslineGit()}
+set statusline+=\ %f%m
+set statusline+=%=
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
+
+
+
 """ Syntastic
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html','c','cpp','hpp'] }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -113,11 +139,6 @@ let g:vim_markdown_folding_disabled=1
 colorscheme molokai 
 set t_Co=256
 
-"hide toolbars 
-"set guioptions-=m  "remove menu bar
-"set guioptions-=T  "remove toolbar
-"set guioptions-=r  "remove right-hand scroll bar
-
 "nerdtree
 let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
 
@@ -130,3 +151,4 @@ nnoremap <space> za
 au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
 let python_highlight_all=1
 let g:flake8_cmd="python3 -m pyflakes"
+
