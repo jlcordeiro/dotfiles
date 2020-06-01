@@ -48,15 +48,11 @@ Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'plasticboy/vim-markdown'
-"Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/syntastic'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'nvie/vim-flake8'
-"Bundle 'tomtom/tlib_vim'
 Bundle 'marcweber/vim-addon-mw-utils'
-" Colorscheme bundles
-Bundle 'tomasr/molokai'
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'morhetz/gruvbox'
 
 filetype plugin indent on     " required!
 
@@ -102,7 +98,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:vim_markdown_folding_disabled=1
 
 """ gui options 
-colorscheme molokai 
+colorscheme gruvbox
 
 "nerdtree
 let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
