@@ -19,10 +19,13 @@ set mouse=a
 set history=100
 "show invisibles
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,trail:.
 
-"Open epub files
-au BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
+" swap / backup / undo
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
 
 "Commenting and Un-Commenting code
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
@@ -32,11 +35,6 @@ au FileType sh,make,py let b:comment_leader = '# '
 au FileType tex let b:comment_leader = '% '
 noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohl<CR>
 noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohl<CR>
-
-"backup
-"set backup
-"set backupext=.bak
-"set backupdir=~/.vim/backupdir
 
 """ Vundle
 set nocompatible
