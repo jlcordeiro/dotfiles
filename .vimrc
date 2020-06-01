@@ -17,6 +17,7 @@ set cursorline
 set hlsearch
 set mouse=a
 set history=100
+set updatetime=500
 "show invisibles
 set list
 set listchars=tab:▸\ ,eol:¬,trail:.
@@ -43,7 +44,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'sjl/gundo.vim'
+Bundle 'mbbill/undotree'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
@@ -99,6 +100,9 @@ let g:vim_markdown_folding_disabled=1
 
 """ gui options 
 colorscheme gruvbox
+set background=dark
+set colorcolumn=80
+
 
 "nerdtree
 let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
@@ -112,3 +116,8 @@ nnoremap <space> za
 au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
 let python_highlight_all=1
 let g:flake8_cmd="python3 -m pyflakes"
+
+
+" leader
+let mapleader = " "
+nnoremap <leader>u :UndotreeShow<CR>
