@@ -45,17 +45,33 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'mbbill/undotree'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'scrooloose/syntastic'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'nvie/vim-flake8'
-Bundle 'marcweber/vim-addon-mw-utils'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fugitive'
 Bundle 'morhetz/gruvbox'
+" rg
+Bundle 'jremmen/vim-ripgrep'
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
 
 filetype plugin indent on     " required!
+
+
+""" netrw
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 2
+let g:vrfr_rg = 'true'
+let g:netrw_banner = 0
+let g:netrw_winsize = 15
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
+
 
 
 """ status
@@ -103,14 +119,9 @@ colorscheme gruvbox
 set background=dark
 set colorcolumn=80
 
-
-"nerdtree
-let NERDTreeIgnore=['\.o$', '\~$', '\.pyc$']
-
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-nnoremap <space> za
 
 " Python / PEP8
 au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
@@ -118,6 +129,21 @@ let python_highlight_all=1
 let g:flake8_cmd="python3 -m pyflakes"
 
 
+" ignore files we'll never want in vim
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.make
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|bin|build)$',
+  \ 'file': '\v\.(exe|so|o|make)$',
+  \ }
+
+
 " leader
 let mapleader = " "
 nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>p :CtrlP .<CR>
+nnoremap <Leader>= :vertical resize +5<CR>
+nnoremap <Leader>+ :vertical resize +50<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <Leader>_ :vertical resize -50<CR>
