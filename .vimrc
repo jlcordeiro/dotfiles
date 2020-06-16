@@ -51,7 +51,10 @@ Bundle 'myusuf3/numbers.vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'morhetz/gruvbox'
+" colorscheme
+Bundle 'sickill/vim-monokai'
+Bundle 'gosukiwi/vim-atom-dark'
+Bundle 'sjl/badwolf'
 " rg
 Bundle 'jremmen/vim-ripgrep'
 if executable('rg')
@@ -67,10 +70,7 @@ let g:netrw_browse_split = 2
 let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_winsize = 15
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+let g:netrw_list_hide= '.*\.swp$,\.pyc$,\.o$,\.so$'
 
 
 
@@ -115,10 +115,14 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:vim_markdown_folding_disabled=1
 
 """ gui options 
-colorscheme gruvbox
+colorscheme monokai
 set background=dark
 set colorcolumn=80
 
+" Visual bell
+set visualbell
+set t_vb=
+" 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
