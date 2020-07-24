@@ -115,7 +115,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:vim_markdown_folding_disabled=1
 
 """ gui options 
-colorscheme monokai
+colorscheme badwolf
 set background=dark
 set colorcolumn=80
 
